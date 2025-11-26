@@ -8,7 +8,7 @@ Contoh aplikasi **Webserver** berbasis Python untuk **ctrlX Automation SDK**.
 
 1. **Clone repository SDK 2.6**
    ```bash
-   git clone https://github.com/boschrexroth/ctrlx-automation-sdk.git -b 2.6
+   [git clone https://github.com/boschrexroth/ctrlx-automation-sdk.git -b 2.6](https://github.com/boschrexroth/ctrlx-automation-sdk/releases/download/2.6.0/ctrlx-automation-sdk-2.6.0.zip)
    ```
 - Pindahkan file Debian (ctrlx-datalayer-*.deb) ke folder project ini.
 - Pastikan library ctrlx-datalayer tersedia.
@@ -16,7 +16,7 @@ Contoh aplikasi **Webserver** berbasis Python untuk **ctrlX Automation SDK**.
 2. **Install requirements umum Jalankan script dependencies dari folder scripts/:**
 3. **Install requirements dari folder webserver**
 ```bash
-pip install -r requirements.txt
+   pip install -r requirements.txt
 ```
 4. **Output tersedia untuk dua arsitektur:**
 - AMD64 (x86_64)
