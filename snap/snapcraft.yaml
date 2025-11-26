@@ -1,0 +1,84 @@
+name: sdk-py-webserver
+title: SDK Python Web Server
+version: 1.0.0
+summary: Web server Sample written in Python for ctrlX
+description: |
+  This sample shows how to create a web server app in ctrlX
+base: core22
+confinement: strict
+grade: stable
+
+apps:
+  webserver:
+    command: bin/main.py
+    plugs:
+      - network-bind
+      - active-solution
+      - datalayer
+    slots:
+      - package-assets
+      - package-run
+    daemon: simple
+
+parts:
+  webserver:
+    plugin: python
+    source: .
+    after:
+      - ctrlx-datalayer-deb
+    stage-packages:
+      - libzmq5
+      - libsystemd-dev
+      - libnorm1
+      - libpgm-5.3-0
+      - libsodium23
+
+      
+    
+  configs:
+    plugin: dump
+    source: ./configs
+    organize:
+      'package-assets/*': package-assets/${SNAPCRAFT_PROJECT_NAME}/
+
+  www:
+    plugin: dump
+    source: ./www
+    organize:
+      '*': www/
+
+  ctrlx-datalayer-deb:
+    plugin: nil
+    stage-packages:
+      - libnorm1
+      - libpgm-5.3-0
+      - libsodium23
+      - libzmq5
+    override-build: |
+      # Extract the provided local .deb into the part install area
+      dpkg-deb -x $SNAPCRAFT_PROJECT_DIR/ctrlx-datalayer-2.6.1.deb $SNAPCRAFT_PART_INSTALL
+      snapcraftctl build
+
+slots:
+  package-assets:
+    interface: content
+    content: package-assets
+    source:
+      read:
+        - $SNAP/package-assets/${SNAPCRAFT_PROJECT_NAME}
+  package-run:
+    interface: content
+    content: package-run
+    source:
+      write:
+        - $SNAP_DATA/package-run/${SNAPCRAFT_PROJECT_NAME}
+
+plugs:
+  active-solution:
+    interface: content
+    content: solutions
+    target: $SNAP_COMMON/solutions
+  datalayer:
+    interface: content
+    content: datalayer
+    target: $SNAP_DATA/.datalayer
