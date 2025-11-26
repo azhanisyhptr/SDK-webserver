@@ -24,4 +24,4 @@ pip install -r requirements.txt
   
 ## ⚠️ Error Saat Menjalankan Aplikasi
 Berikut contoh error yang muncul ketika menjalankan program via VS Code build task:
-![tampilan error](URL_gambar)
+![Apps Error](https://github.com/azhanisyhptr/SDK-webserver/blob/main/apps-error.png)
