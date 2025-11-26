@@ -22,5 +22,6 @@ pip install -r requirements.txt
 - AMD64 (x86_64)
 - ARM64 (aarch64)
   
-##⚠️ Error Saat Menjalankan Aplikasi
+## ⚠️ Error Saat Menjalankan Aplikasi
 Berikut contoh error yang muncul ketika menjalankan program via VS Code build task:
+![tampilan error](URL_gambar)
